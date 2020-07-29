@@ -30,12 +30,12 @@ public class ButtonPressScript : MonoBehaviour
 
 	private void Update()
 	{
-		if(_buttonIsMooving && _doorIsMooving)
+		if (_buttonIsMooving && _doorIsMooving)
 		{
 			transform.position = Vector3.MoveTowards(transform.position, _targetPosForButton, 0.1f);
 			_doorToOpen.transform.position = Vector3.MoveTowards(_doorToOpen.transform.position, _openedDoorPos, 0.1f);
 		}
-		if(_doorIsClosing)
+		if (_doorIsClosing)
 		{
 			transform.position = Vector3.MoveTowards(transform.position, _defaultButtonPos, 0.1f);
 			_doorToOpen.transform.position = Vector3.MoveTowards(_doorToOpen.transform.position, _defaultDoorPos, 0.1f);
@@ -45,11 +45,13 @@ public class ButtonPressScript : MonoBehaviour
 	}
 
 	private void OnTriggerEnter(Collider other)
-	{		
+	{
+
 		_buttonIsMooving = true;
 		_doorIsMooving = true;
 
 		StartCoroutine(DisableButtonAndDoor());
+
 	}
 
 	IEnumerator DisableClosing()
@@ -60,12 +62,12 @@ public class ButtonPressScript : MonoBehaviour
 	}
 
 	IEnumerator DisableButtonAndDoor()
-	{		
+	{
 		yield return new WaitForSeconds(3f);
 
 		_buttonIsMooving = false;
 		_doorIsMooving = false;
 
 		_doorIsClosing = true;
-	}	
+	}
 }
