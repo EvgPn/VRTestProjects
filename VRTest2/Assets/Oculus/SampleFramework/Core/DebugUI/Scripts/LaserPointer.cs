@@ -27,6 +27,7 @@ public class LaserPointer : OVRCursor
     public GameObject cursorVisual;
     public float maxLength = 10.0f;
 
+    [SerializeField]
     private LaserBeamBehavior _laserBeamBehavior;
     bool m_restoreOnInputAcquired = false;
 
@@ -64,7 +65,7 @@ public class LaserPointer : OVRCursor
     {
         if (cursorVisual) cursorVisual.SetActive(false);
         OVRManager.InputFocusAcquired += OnInputFocusAcquired;
-        OVRManager.InputFocusLost += OnInputFocusLost;
+        OVRManager.InputFocusLost += OnInputFocusLost;        
     }
 
     public override void SetCursorStartDest(Vector3 start, Vector3 dest, Vector3 normal)
