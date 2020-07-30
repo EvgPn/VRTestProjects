@@ -63,7 +63,7 @@ public class LaserPointer : OVRCursor
 
     private void Start()
     {
-        if (cursorVisual) cursorVisual.SetActive(false);
+        //if (cursorVisual) cursorVisual.SetActive(false);
         OVRManager.InputFocusAcquired += OnInputFocusAcquired;
         OVRManager.InputFocusLost += OnInputFocusLost;        
     }
@@ -92,14 +92,14 @@ public class LaserPointer : OVRCursor
             if (cursorVisual)
             {
                 cursorVisual.transform.position = _endPoint;
-                cursorVisual.SetActive(true);
+                //cursorVisual.SetActive(true);
             }
         }
         else
         {
             UpdateLaserBeam(_startPoint, _startPoint + maxLength * _forward);
             lineRenderer.SetPosition(1, _startPoint + maxLength * _forward);
-            if (cursorVisual) cursorVisual.SetActive(false);
+            //if (cursorVisual) cursorVisual.SetActive(false);
         }
     }
 
@@ -121,7 +121,7 @@ public class LaserPointer : OVRCursor
             {
                 if (!lineRenderer.enabled)
                 {
-                    lineRenderer.enabled = true;
+                    //lineRenderer.enabled = true;
                     lineRenderer.SetPosition(0, start);
                     lineRenderer.SetPosition(1, end);
                 }
@@ -130,7 +130,7 @@ public class LaserPointer : OVRCursor
             {
                 if (lineRenderer.enabled)
                 {
-                    lineRenderer.enabled = false;
+                    //lineRenderer.enabled = false;
                 }
             }
         }
@@ -138,7 +138,7 @@ public class LaserPointer : OVRCursor
 
     void OnDisable()
     {
-        if (cursorVisual) cursorVisual.SetActive(false);
+        //if (cursorVisual) cursorVisual.SetActive(false);
     }
     public void OnInputFocusLost()
     {
