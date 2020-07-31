@@ -8,3 +8,4 @@ Scene has room with:
   2. Canvas with button for spawning cubes
   3. Simple "3d button" to spawn distance grabbable balls
   4. To see laser pointer hold "B" button on right stick
+  5. Call teleport on left stick. Set teleport direction on right stick
