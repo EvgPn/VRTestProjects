@@ -219,7 +219,6 @@ GameObject:
   - component: {fileID: 23000011121329698}
   - component: {fileID: 54000010205045294}
   - component: {fileID: 114089168713625662}
-  - component: {fileID: 4459870025796260220}
   m_Layer: 8
   m_Name: DistanceGrabCubeCrosshair
   m_TagString: Untagged
@@ -234,14 +233,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000013972948528}
-  m_LocalRotation: {x: -0, y: 0.9625246, z: -0, w: 0.27119458}
+  m_LocalRotation: {x: 0, y: 0.96252394, z: 0, w: 0.2711969}
   m_LocalPosition: {x: 1.7751787, y: 1.1705353, z: -0.9219202}
-  m_LocalScale: {x: 0.08000003, y: 0.08, z: 0.08000003}
+  m_LocalScale: {x: 0.08000002, y: 0.08, z: 0.08000002}
   m_Children:
   - {fileID: 4000014055629988}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 148.45201, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 148.529, z: 0}
 --- !u!33 &33000010949262612
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -281,7 +280,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 99420f5a26a93487aa0ae70d73da8c34, type: 2}
+  - {fileID: 2100000, guid: 3004f05b13f291c49831b57089640c63, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -336,20 +335,3 @@ MonoBehaviour:
   m_snapOffset: {fileID: 0}
   m_grabPoints: []
   m_materialColorField: _OutlineColor
---- !u!114 &4459870025796260220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000013972948528}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02d61468f8b77ae4b92c344bc9a600fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_allowOffhandGrab: 1
-  m_snapPosition: 0
-  m_snapOrientation: 0
-  m_snapOffset: {fileID: 0}
-  m_grabPoints: []
