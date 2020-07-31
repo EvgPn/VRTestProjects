@@ -20,11 +20,11 @@ public class ButtonPressScript : MonoBehaviour
 
 	private void Update()
 	{
-		if(_moveButton)
+		if (_moveButton)
 		{
 			transform.position = Vector3.MoveTowards(transform.position, _targetButtonMovePos, 0.1f);
 		}
-		if(!_moveButton)
+		if (!_moveButton)
 		{
 			transform.position = Vector3.MoveTowards(transform.position, _defaultButtonPos, 0.1f);
 		}

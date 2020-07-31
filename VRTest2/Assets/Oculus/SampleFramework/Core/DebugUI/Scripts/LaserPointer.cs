@@ -14,6 +14,7 @@ using System.Collections;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using System;
+using UnityEngine.XR;
 
 public class LaserPointer : OVRCursor
 {
@@ -29,7 +30,7 @@ public class LaserPointer : OVRCursor
 
     [SerializeField]
     private LaserBeamBehavior _laserBeamBehavior;
-    bool m_restoreOnInputAcquired = false;
+    bool m_restoreOnInputAcquired = false;    
 
     public LaserBeamBehavior laserBeamBehavior
     {
@@ -40,7 +41,7 @@ public class LaserPointer : OVRCursor
             {
                 lineRenderer.enabled = false;
             }
-            else
+            if(laserBeamBehavior == LaserBeamBehavior.On)
             {
                 lineRenderer.enabled = true;
             }
@@ -56,6 +57,8 @@ public class LaserPointer : OVRCursor
     private bool _hitTarget;
     private LineRenderer lineRenderer;
 
+    
+
     private void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
@@ -63,9 +66,9 @@ public class LaserPointer : OVRCursor
 
     private void Start()
     {
-        //if (cursorVisual) cursorVisual.SetActive(false);
+        if (cursorVisual) cursorVisual.SetActive(false);
         OVRManager.InputFocusAcquired += OnInputFocusAcquired;
-        OVRManager.InputFocusLost += OnInputFocusLost;        
+        OVRManager.InputFocusLost += OnInputFocusLost;                 
     }
 
     public override void SetCursorStartDest(Vector3 start, Vector3 dest, Vector3 normal)
@@ -92,14 +95,14 @@ public class LaserPointer : OVRCursor
             if (cursorVisual)
             {
                 cursorVisual.transform.position = _endPoint;
-                //cursorVisual.SetActive(true);
+                cursorVisual.SetActive(true);
             }
         }
         else
         {
             UpdateLaserBeam(_startPoint, _startPoint + maxLength * _forward);
             lineRenderer.SetPosition(1, _startPoint + maxLength * _forward);
-            //if (cursorVisual) cursorVisual.SetActive(false);
+            if (cursorVisual) cursorVisual.SetActive(false);
         }
     }
 
@@ -110,8 +113,9 @@ public class LaserPointer : OVRCursor
         {
             return;
         }
-        else if (laserBeamBehavior == LaserBeamBehavior.On)
+        else if (laserBeamBehavior == LaserBeamBehavior.On && OVRInput.Get(OVRInput.Button.Two))
         {
+            lineRenderer.enabled = true;
             lineRenderer.SetPosition(0, start);
             lineRenderer.SetPosition(1, end);
         }
@@ -121,7 +125,7 @@ public class LaserPointer : OVRCursor
             {
                 if (!lineRenderer.enabled)
                 {
-                    //lineRenderer.enabled = true;
+                    lineRenderer.enabled = true;
                     lineRenderer.SetPosition(0, start);
                     lineRenderer.SetPosition(1, end);
                 }
@@ -130,15 +134,19 @@ public class LaserPointer : OVRCursor
             {
                 if (lineRenderer.enabled)
                 {
-                    //lineRenderer.enabled = false;
+                    lineRenderer.enabled = false;
                 }
             }
+        }
+        else
+		{
+            lineRenderer.enabled = false;
         }
     }
 
     void OnDisable()
     {
-        //if (cursorVisual) cursorVisual.SetActive(false);
+        if (cursorVisual) cursorVisual.SetActive(false);
     }
     public void OnInputFocusLost()
     {
